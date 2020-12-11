@@ -1,6 +1,10 @@
 package com.aditya.to_do.ui.adapters
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Spinner
 import androidx.cardview.widget.CardView
@@ -22,12 +26,25 @@ class BindingAdapters {
         @BindingAdapter("android:allowInput")
         @JvmStatic
         fun allowInput(autoCompleteTextView: AutoCompleteTextView, show: Boolean){
+            autoCompleteTextView.isCursorVisible = show
             autoCompleteTextView.showSoftInputOnFocus = show
+            val options: Array<String> = autoCompleteTextView.context.resources.getStringArray(R.array.priorities)
+            val adapter: ArrayAdapter<String> = ArrayAdapter(autoCompleteTextView.context, R.layout.dropdown_item, options)
+            autoCompleteTextView.setAdapter(adapter)
+            autoCompleteTextView.setOnFocusChangeListener { v, hasFocus ->
+                if(hasFocus){
+                    val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
+                }
+            }
         }
 
         @BindingAdapter("android:navigateToAddFragment")
         @JvmStatic
-        fun navigateToAddFragment(floatingActionButton: ExtendedFloatingActionButton, navigate:Boolean){
+        fun navigateToAddFragment(
+            floatingActionButton: ExtendedFloatingActionButton,
+            navigate: Boolean
+        ){
             floatingActionButton.setOnClickListener {
                 if(navigate){floatingActionButton.findNavController().navigate(R.id.action_listingFragment_to_newFragment)}
             }
@@ -37,8 +54,8 @@ class BindingAdapters {
         @JvmStatic
         fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>){
             when (emptyDatabase.value){
-                true-> view.visibility = View.VISIBLE
-                false-> view.visibility = View.INVISIBLE
+                true -> view.visibility = View.VISIBLE
+                false -> view.visibility = View.INVISIBLE
             }
         }
 
@@ -46,18 +63,20 @@ class BindingAdapters {
         @JvmStatic
         fun sendDataToUpdateFragment(view: ConstraintLayout, currentItem: TaskModel){
             view.setOnClickListener {
-                val action = ListingFragmentDirections.actionListingFragmentToEditFragment(currentItem)
+                val action = ListingFragmentDirections.actionListingFragmentToEditFragment(
+                    currentItem
+                )
                 view.findNavController().navigate(action)
             }
         }
 
-        @BindingAdapter("android:parsePriorityToInt")
+        @BindingAdapter("android:parsePriorityToText")
         @JvmStatic
-        fun parsePriorityToInt(view: Spinner, priority: Priority){
+        fun parsePriorityToText(view: AutoCompleteTextView, priority: Priority){
             when(priority){
-                Priority.HIGH -> { view.setSelection(0) }
-                Priority.MEDIUM -> { view.setSelection(1) }
-                Priority.LOW-> { view.setSelection(2) }
+                Priority.HIGH -> { view.setText("High Priority") }
+                Priority.MEDIUM -> { view.setText("Medium Priority") }
+                Priority.LOW -> { view.setText("Low Priority") }
             }
         }
 
@@ -65,15 +84,30 @@ class BindingAdapters {
         @JvmStatic
         fun parsePriorityColor(cardView: CardView, priority: Priority){
             when(priority){
-                Priority.HIGH->{ cardView.setCardBackgroundColor(
-                    ContextCompat.getColor(cardView.context,
-                        R.color.colorPrimaryDark))}
-                Priority.MEDIUM->{ cardView.setCardBackgroundColor(
-                    ContextCompat.getColor(cardView.context,
-                        R.color.colorPrimary))}
-                Priority.LOW->{ cardView.setCardBackgroundColor(
-                    ContextCompat.getColor(cardView.context,
-                        R.color.colorAccent))}
+                Priority.HIGH -> {
+                    cardView.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            cardView.context,
+                            R.color.colorPrimaryDark
+                        )
+                    )
+                }
+                Priority.MEDIUM -> {
+                    cardView.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            cardView.context,
+                            R.color.colorPrimary
+                        )
+                    )
+                }
+                Priority.LOW -> {
+                    cardView.setCardBackgroundColor(
+                        ContextCompat.getColor(
+                            cardView.context,
+                            R.color.colorAccent
+                        )
+                    )
+                }
             }
         }
     }

@@ -16,6 +16,8 @@ class AppActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(700)
+        setTheme(R.style.ToDo)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_app)
         setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
     }

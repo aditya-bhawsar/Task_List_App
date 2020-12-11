@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:name=".App"
-        android:theme="@style/Theme.ToDo">
+        android:theme="@style/Splash">
         <activity android:name=".ui.activity.AppActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

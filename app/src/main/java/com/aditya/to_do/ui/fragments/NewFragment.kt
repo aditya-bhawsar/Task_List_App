@@ -30,10 +30,6 @@ class NewFragment : Fragment(R.layout.fragment_new) {
         _binding = FragmentNewBinding.bind(view)
 
         binding.apply {
-            val options: Array<String> = resources.getStringArray(R.array.priorities)
-            val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), R.layout.dropdown_item, options)
-            optionDropdown.setAdapter(adapter)
-            optionDropdown.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> val selected = position+1 }
             saveFab.setOnClickListener { insertData() }
         }
     }

@@ -53,9 +53,9 @@
             <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:id="@+id/option_dropdown"
-                android:cursorVisible="false"
                 android:allowInput="@{false}"
                 android:paddingStart="24dp"
+                android:parsePriorityToText="@{args.task.priority}"
                 android:paddingEnd="24dp"
                 android:layout_height="match_parent" />
 

@@ -12,6 +12,7 @@ class AppRepository @Inject constructor(private val taskDao: TaskDao) {
     fun sortByHighPriority() = taskDao.sortByLowPriority()
 
     fun searchDatabase(searchQuery: String): LiveData<List<TaskModel>> = taskDao.searchDatabase(searchQuery)
+
     suspend fun insertData(toDoData: TaskModel) = taskDao.insert(toDoData)
     suspend fun updateData(toDoData: TaskModel) = taskDao.updateItem(toDoData)
     suspend fun deleteData(toDoData: TaskModel) = taskDao.deleteItem(toDoData)

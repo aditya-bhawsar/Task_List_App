@@ -6,7 +6,6 @@ import com.aditya.to_do.model.TaskModel
 import javax.inject.Inject
 
 class AppRepository @Inject constructor(private val taskDao: TaskDao) {
-
     fun getAllData() = taskDao.getAllData()
     fun sortByLowPriority() = taskDao.sortByHighPriority()
     fun sortByHighPriority() = taskDao.sortByLowPriority()
@@ -15,5 +14,4 @@ class AppRepository @Inject constructor(private val taskDao: TaskDao) {
     suspend fun updateData(toDoData: TaskModel) = taskDao.updateItem(toDoData)
     suspend fun deleteData(toDoData: TaskModel) = taskDao.deleteItem(toDoData)
     suspend fun deleteAll() = taskDao.deleteAll()
-
 }

@@ -89,7 +89,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/color_icon_purple"
             android:id="@+id/save_fab"
             android:textAlignment="center"
             app:icon="@drawable/ic_check"

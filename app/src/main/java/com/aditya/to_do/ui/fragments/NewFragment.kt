@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.aditya.to_do.R
 import com.aditya.to_do.databinding.FragmentNewBinding
 import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.util.Utils.parsePriority
 import com.aditya.to_do.util.Utils.verifyData
 import com.aditya.to_do.viewModel.NewViewModel
@@ -30,6 +31,10 @@ class NewFragment : Fragment(R.layout.fragment_new) {
         _binding = FragmentNewBinding.bind(view)
 
         binding.apply { saveFab.setOnClickListener { insertData() } }
+
+
+        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
+        (activity as AppActivity).supportActionBar!!.setIcon(null)
     }
 
     private fun insertData() {

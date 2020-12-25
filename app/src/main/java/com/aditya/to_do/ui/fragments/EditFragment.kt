@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.aditya.to_do.R
 import com.aditya.to_do.databinding.FragmentEditBinding
 import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.util.Utils.parsePriority
 import com.aditya.to_do.util.Utils.verifyData
 import com.aditya.to_do.viewModel.EditViewModel
@@ -39,6 +40,8 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         }
 
         setHasOptionsMenu(true)
+        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
+        (activity as AppActivity).supportActionBar!!.setIcon(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) { inflater.inflate(R.menu.update_fragment_menu,menu) }

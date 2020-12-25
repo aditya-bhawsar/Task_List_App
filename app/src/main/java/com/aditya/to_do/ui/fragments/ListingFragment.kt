@@ -6,8 +6,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.SearchView
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
+
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,6 +57,8 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
         })
 
         setHasOptionsMenu(true)
+        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
+        (activity as AppActivity).supportActionBar!!.setIcon(R.drawable.ic_to_do)
     }
 
     private fun swipeToDelete(listRv: RecyclerView) {
@@ -92,6 +95,7 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
 
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
+        println(searchQuery)
         mListingViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner, {list->
             list?.let {
                 adapter.differ.submitList(it)

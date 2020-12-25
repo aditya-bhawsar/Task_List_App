@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aditya.to_do.R
 import com.aditya.to_do.databinding.FragmentListingBinding
 import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.ui.adapters.TaskAdapter
 import com.aditya.to_do.viewModel.ListingViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -53,8 +54,6 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
             mListingViewModel.checkIfDatabaseEmpty(data.isEmpty())
             adapter.differ.submitList(data)
         })
-
-        //hideKeyBoard(requireActivity())
 
         setHasOptionsMenu(true)
     }

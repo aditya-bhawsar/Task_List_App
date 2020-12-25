@@ -1,12 +1,12 @@
 package com.aditya.to_do.ui.adapters
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Spinner
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -17,6 +17,7 @@ import com.aditya.to_do.R
 import com.aditya.to_do.model.Priority
 import com.aditya.to_do.model.TaskModel
 import com.aditya.to_do.ui.fragments.ListingFragmentDirections
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class BindingAdapters {
@@ -28,9 +29,11 @@ class BindingAdapters {
         fun allowInput(autoCompleteTextView: AutoCompleteTextView, show: Boolean){
             autoCompleteTextView.isCursorVisible = show
             autoCompleteTextView.showSoftInputOnFocus = show
+
             val options: Array<String> = autoCompleteTextView.context.resources.getStringArray(R.array.priorities)
             val adapter: ArrayAdapter<String> = ArrayAdapter(autoCompleteTextView.context, R.layout.dropdown_item, options)
             autoCompleteTextView.setAdapter(adapter)
+
             autoCompleteTextView.setOnFocusChangeListener { v, hasFocus ->
                 if(hasFocus){
                     val imm = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -82,31 +85,25 @@ class BindingAdapters {
 
         @BindingAdapter("android:parsePriorityColor")
         @JvmStatic
-        fun parsePriorityColor(cardView: CardView, priority: Priority){
+        fun parsePriorityColor(view:ImageView, priority: Priority){
             when(priority){
                 Priority.HIGH -> {
-                    cardView.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            cardView.context,
-                            R.color.colorPrimaryDark
-                        )
-                    )
+                    view.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(
+                        view.context,
+                        R.color.colorRed
+                    ))
                 }
                 Priority.MEDIUM -> {
-                    cardView.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            cardView.context,
-                            R.color.colorPrimary
-                        )
-                    )
+                    view.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(
+                        view.context,
+                        R.color.colorYellow
+                    ))
                 }
                 Priority.LOW -> {
-                    cardView.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            cardView.context,
-                            R.color.colorAccent
-                        )
-                    )
+                    view.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(
+                        view.context,
+                        R.color.colorGreen
+                    ))
                 }
             }
         }

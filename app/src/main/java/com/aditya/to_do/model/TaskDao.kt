@@ -24,10 +24,10 @@ interface TaskDao {
     @Query("SELECT * FROM task_table WHERE title LIKE :searchQuery")
     fun searchDatabase(searchQuery: String): LiveData<List<TaskModel>>
 
-    @Query("SELECT * FROM task_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 1 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 3 END")
+    @Query("SELECT * FROM task_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 3 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 1 END")
     fun sortByHighPriority(): LiveData<List<TaskModel>>
 
-    @Query("SELECT * FROM task_table ORDER BY CASE WHEN priority LIKE 'H%' THEN 3 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'L%' THEN 1 END")
+    @Query("SELECT * FROM task_table ORDER BY CASE WHEN priority LIKE 'L%' THEN 3 WHEN priority LIKE 'M%' THEN 2 WHEN priority LIKE 'H%' THEN 1 END")
     fun sortByLowPriority(): LiveData<List<TaskModel>>
 
 }

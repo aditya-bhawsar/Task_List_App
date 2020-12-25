@@ -29,9 +29,7 @@ class NewFragment : Fragment(R.layout.fragment_new) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentNewBinding.bind(view)
 
-        binding.apply {
-            saveFab.setOnClickListener { insertData() }
-        }
+        binding.apply { saveFab.setOnClickListener { insertData() } }
     }
 
     private fun insertData() {

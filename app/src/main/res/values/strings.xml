@@ -12,6 +12,7 @@
     <string name="save">Save</string>
     <string name="description">Description</string>
     <string name="new_task">New Task</string>
+    <string name="delete">Delete</string>
 
     <string-array name="priorities">
         <item>High Priority</item>

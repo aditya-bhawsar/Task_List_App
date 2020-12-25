@@ -33,7 +33,10 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEditBinding.bind(view)
 
-        binding.apply { args = this@EditFragment.args }
+        binding.apply {
+            args = this@EditFragment.args
+            saveFab.setOnClickListener { updateItem() }
+        }
 
         setHasOptionsMenu(true)
     }
@@ -42,7 +45,6 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.menu_save->updateItem()
             R.id.menu_delete->confirmItemRemoval()
         }
         return super.onOptionsItemSelected(item)

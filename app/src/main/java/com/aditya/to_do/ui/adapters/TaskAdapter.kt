@@ -1,11 +1,15 @@
 package com.aditya.to_do.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.aditya.to_do.R
 import com.aditya.to_do.databinding.RowLayoutBinding
+import com.aditya.to_do.model.Priority
 import com.aditya.to_do.model.TaskModel
 
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {

@@ -60,7 +60,8 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             .setNegativeButton("No"){_,_->}
             .setTitle("Delete '${args.Task.title}'?")
             .setMessage("Are you sure you want to remove '${args.Task.title}'?")
-            .create().show()
+            .create()
+            .show()
     }
 
     private fun updateItem() {

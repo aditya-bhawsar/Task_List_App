@@ -2,12 +2,11 @@ package com.aditya.to_do.ui.adapters
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import androidx.cardview.widget.CardView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -17,7 +16,6 @@ import com.aditya.to_do.R
 import com.aditya.to_do.model.Priority
 import com.aditya.to_do.model.TaskModel
 import com.aditya.to_do.ui.fragments.ListingFragmentDirections
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class BindingAdapters {

@@ -4,11 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
-
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +18,7 @@ import com.aditya.to_do.databinding.FragmentListingBinding
 import com.aditya.to_do.model.TaskModel
 import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.ui.adapters.TaskAdapter
+import com.aditya.to_do.util.Utils.observeOnce
 import com.aditya.to_do.viewModel.ListingViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -96,7 +96,7 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
         println(searchQuery)
-        mListingViewModel.searchDatabase(searchQuery).observe(viewLifecycleOwner, {list->
+        mListingViewModel.searchDatabase(searchQuery).observeOnce(viewLifecycleOwner, {list->
             list?.let {
                 adapter.differ.submitList(it)
             }

@@ -23,7 +23,6 @@ import com.aditya.to_do.viewModel.ListingViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import jp.wasabeef.recyclerview.animators.LandingAnimator
 
 @AndroidEntryPoint
 class ListingFragment : Fragment(R.layout.fragment_listing) {
@@ -45,15 +44,14 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
             viewModel = mListingViewModel
             listRv.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             listRv.adapter = adapter
-            listRv.itemAnimator = LandingAnimator().apply {
-                addDuration = 300
-            }
+
             swipeToDelete(listRv)
         }
 
         mListingViewModel.getAllData.observe(viewLifecycleOwner, { data->
             mListingViewModel.checkIfDatabaseEmpty(data.isEmpty())
             adapter.differ.submitList(data)
+            binding.listRv.scheduleLayoutAnimation()
         })
 
         setHasOptionsMenu(true)

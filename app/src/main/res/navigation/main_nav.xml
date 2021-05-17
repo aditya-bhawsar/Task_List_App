@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/listingFragment"
         android:name="com.aditya.to_do.ui.fragments.ListingFragment"
-        android:label="Tasks List" >
+        android:label="  Task List" >
         <action
             android:id="@+id/action_listingFragment_to_newFragment"
             app:destination="@id/newFragment"

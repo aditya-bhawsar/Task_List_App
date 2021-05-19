@@ -20,7 +20,7 @@ class NewFragment : Fragment(R.layout.fragment_new) {
 
     private val mNewViewModel: NewViewModel by viewModels()
 
-    private var _binding : FragmentNewBinding? = null
+    private var _binding: FragmentNewBinding? = null
     private val binding
         get() = _binding!!
 
@@ -40,8 +40,8 @@ class NewFragment : Fragment(R.layout.fragment_new) {
         val mPriority = binding.optionDropdown.text.toString()
         val mDescription = binding.descEt.text.toString()
 
-        val validation = verifyData(mTitle,mDescription,mPriority)
-        if(validation){
+        val validation = verifyData(mTitle, mDescription, mPriority)
+        if (validation) {
             val data = TaskModel(
                 0,
                 mTitle,
@@ -49,9 +49,11 @@ class NewFragment : Fragment(R.layout.fragment_new) {
                 parsePriority(mPriority)
             )
             mNewViewModel.insertData(data)
-            Toast.makeText(requireContext(),"Added SuccessFully", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Added SuccessFully", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_newFragment_to_listingFragment)
-        }else{ Toast.makeText(requireContext(),"Please Fill all data", Toast.LENGTH_LONG).show() }
+        } else {
+            Toast.makeText(requireContext(), "Please Fill all data", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroy() {

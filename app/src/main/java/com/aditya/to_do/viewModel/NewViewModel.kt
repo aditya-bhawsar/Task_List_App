@@ -10,8 +10,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewViewModel @Inject constructor(private val appRepo: AppRepository): ViewModel() {
+class NewViewModel @Inject constructor(private val appRepo: AppRepository) : ViewModel() {
 
-    fun insertData(task: TaskModel) = viewModelScope.launch(Dispatchers.IO) { appRepo.insertData(task) }
+    fun insertData(task: TaskModel) =
+        viewModelScope.launch(Dispatchers.IO) { appRepo.insertData(task) }
 
 }

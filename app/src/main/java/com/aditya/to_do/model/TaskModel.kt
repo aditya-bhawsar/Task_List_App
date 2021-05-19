@@ -13,4 +13,4 @@ data class TaskModel(
     var title: String,
     var description: String,
     var priority: Priority
-): Parcelable
+) : Parcelable

@@ -29,9 +29,9 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
 
     private val mListingViewModel: ListingViewModel by viewModels()
 
-    private val adapter : TaskAdapter by lazy { TaskAdapter() }
+    private val adapter: TaskAdapter by lazy { TaskAdapter() }
 
-    private var _binding : FragmentListingBinding? = null
+    private var _binding: FragmentListingBinding? = null
     private val binding
         get() = _binding!!
 
@@ -48,7 +48,7 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
             swipeToDelete(listRv)
         }
 
-        mListingViewModel.getAllData.observe(viewLifecycleOwner, { data->
+        mListingViewModel.getAllData.observe(viewLifecycleOwner, { data ->
             mListingViewModel.checkIfDatabaseEmpty(data.isEmpty())
             adapter.differ.submitList(data)
             binding.listRv.scheduleLayoutAnimation()
@@ -60,14 +60,20 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
     }
 
     private fun swipeToDelete(listRv: RecyclerView) {
-        val swipeToDelete= object : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
-            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {return false}
+        val swipeToDelete = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val itemToDelete= adapter.differ.currentList[viewHolder.adapterPosition]
+                val itemToDelete = adapter.differ.currentList[viewHolder.adapterPosition]
                 mListingViewModel.deleteData(itemToDelete)
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
-                restoreDeletedItem(listRv,itemToDelete)
+                restoreDeletedItem(listRv, itemToDelete)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDelete)
@@ -79,13 +85,18 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
         val search = menu.findItem(R.id.menu_search)
         val searchView = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled = true
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if(query!=null){ searchThroughDatabase(query) }
+                if (query != null) {
+                    searchThroughDatabase(query)
+                }
                 return true
             }
+
             override fun onQueryTextChange(query: String?): Boolean {
-                if(query!=null){ searchThroughDatabase(query) }
+                if (query != null) {
+                    searchThroughDatabase(query)
+                }
                 return true
             }
         })
@@ -94,7 +105,7 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
         println(searchQuery)
-        mListingViewModel.searchDatabase(searchQuery).observeOnce(viewLifecycleOwner, {list->
+        mListingViewModel.searchDatabase(searchQuery).observeOnce(viewLifecycleOwner, { list ->
             list?.let {
                 adapter.differ.submitList(it)
             }
@@ -102,31 +113,41 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.menu_delete_all->{ confirmDeleteAll() }
-            R.id.menu_priority_high->{
-                mListingViewModel.highPriorityData.observe(viewLifecycleOwner, { adapter.differ.submitList(it) })
+        when (item.itemId) {
+            R.id.menu_delete_all -> {
+                confirmDeleteAll()
             }
-            R.id.menu_priority_low->{
-                mListingViewModel.lowPriorityData.observe(viewLifecycleOwner, { adapter.differ.submitList(it) })
+            R.id.menu_priority_high -> {
+                mListingViewModel.highPriorityData.observe(
+                    viewLifecycleOwner,
+                    { adapter.differ.submitList(it) })
+            }
+            R.id.menu_priority_low -> {
+                mListingViewModel.lowPriorityData.observe(
+                    viewLifecycleOwner,
+                    { adapter.differ.submitList(it) })
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun restoreDeletedItem(view: View, task: TaskModel){
-        Snackbar.make(view,"Deleted '${task.title}'", Snackbar.LENGTH_LONG)
-            .setAction("UNDO"){ mListingViewModel.insertData(task) }
+    private fun restoreDeletedItem(view: View, task: TaskModel) {
+        Snackbar.make(view, "Deleted '${task.title}'", Snackbar.LENGTH_LONG)
+            .setAction("UNDO") { mListingViewModel.insertData(task) }
             .show()
     }
 
     private fun confirmDeleteAll() {
         MaterialAlertDialogBuilder(requireContext())
-            .setPositiveButton("Yes"){_,_->
+            .setPositiveButton("Yes") { _, _ ->
                 mListingViewModel.deleteAll()
-                Toast.makeText(requireContext(),"Successfully Removed Everything", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Successfully Removed Everything",
+                    Toast.LENGTH_LONG
+                ).show()
             }
-            .setNegativeButton("No"){_,_->}
+            .setNegativeButton("No") { _, _ -> }
             .setTitle("Delete Everything?")
             .setMessage("Are you sure you want to remove all?")
             .create().show()

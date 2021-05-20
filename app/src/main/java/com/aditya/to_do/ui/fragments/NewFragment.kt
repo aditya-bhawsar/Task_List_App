@@ -30,9 +30,8 @@ class NewFragment : Fragment(R.layout.fragment_new) {
 
         binding.apply { saveFab.setOnClickListener { insertData() } }
 
-
-        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
-        (activity as AppActivity).supportActionBar!!.setIcon(null)
+        (requireActivity() as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
+        (requireActivity() as AppActivity).supportActionBar!!.setIcon(null)
     }
 
     private fun insertData() {

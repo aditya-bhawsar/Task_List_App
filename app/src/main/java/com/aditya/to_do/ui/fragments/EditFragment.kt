@@ -40,8 +40,8 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         }
 
         setHasOptionsMenu(true)
-        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
-        (activity as AppActivity).supportActionBar!!.setIcon(null)
+        (requireActivity() as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(false)
+        (requireActivity() as AppActivity).supportActionBar!!.setIcon(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

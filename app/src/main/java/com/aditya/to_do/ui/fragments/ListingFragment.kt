@@ -40,9 +40,8 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
         _binding = FragmentListingBinding.bind(view)
 
         binding.apply {
-            lifecycleOwner = this@ListingFragment
+            lifecycleOwner = viewLifecycleOwner
             viewModel = mListingViewModel
-            listRv.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             listRv.adapter = adapter
 
             swipeToDelete(listRv)
@@ -55,8 +54,8 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
         })
 
         setHasOptionsMenu(true)
-        (activity as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
-        (activity as AppActivity).supportActionBar!!.setIcon(R.drawable.ic_to_do)
+        (requireActivity() as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
+        (requireActivity() as AppActivity).supportActionBar!!.setIcon(R.drawable.ic_to_do)
     }
 
     private fun swipeToDelete(listRv: RecyclerView) {

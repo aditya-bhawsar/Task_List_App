@@ -31,6 +31,7 @@
             app:destination="@id/listingFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
+            app:launchSingleTop="false"
             app:popUpTo="@id/listingFragment"
             app:popUpToInclusive="true" />
     </fragment>

@@ -48,6 +48,6 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="Task"
-            app:argType="com.aditya.to_do.model.TaskModel" />
+            app:argType="com.aditya.to_do.data.TaskModel" />
     </fragment>
 </navigation>

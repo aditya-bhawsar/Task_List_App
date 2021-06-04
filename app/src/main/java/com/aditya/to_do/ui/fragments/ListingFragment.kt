@@ -10,12 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.aditya.to_do.R
 import com.aditya.to_do.databinding.FragmentListingBinding
-import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.data.TaskModel
 import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.ui.adapters.TaskAdapter
 import com.aditya.to_do.util.Utils.observeOnce

@@ -1,4 +1,4 @@
-package com.aditya.to_do.model
+package com.aditya.to_do.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

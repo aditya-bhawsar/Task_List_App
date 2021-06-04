@@ -1,8 +1,8 @@
 package com.aditya.to_do.repository
 
 import androidx.lifecycle.LiveData
-import com.aditya.to_do.model.TaskDao
-import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.data.TaskDao
+import com.aditya.to_do.data.TaskModel
 import javax.inject.Inject
 
 class AppRepository @Inject constructor(private val taskDao: TaskDao) {

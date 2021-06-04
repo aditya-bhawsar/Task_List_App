@@ -13,6 +13,10 @@
     <string name="description">Description</string>
     <string name="new_task">New Task</string>
     <string name="delete">Delete</string>
+    <string name="priority_indicator">Priority Indicator</string>
+    <string name="high_priority">High Priority</string>
+    <string name="low_priority">Low Priority</string>
+    <string name="medium_priority">Medium Priority</string>
 
     <string-array name="priorities">
         <item>High Priority</item>

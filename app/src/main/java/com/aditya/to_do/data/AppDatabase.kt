@@ -1,4 +1,4 @@
-package com.aditya.to_do.model
+package com.aditya.to_do.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.aditya.to_do.R
 import com.aditya.to_do.databinding.FragmentNewBinding
-import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.data.TaskModel
 import com.aditya.to_do.ui.activity.AppActivity
 import com.aditya.to_do.util.Utils.parsePriority
 import com.aditya.to_do.util.Utils.verifyData

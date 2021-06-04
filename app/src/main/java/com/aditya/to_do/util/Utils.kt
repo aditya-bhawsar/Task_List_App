@@ -3,7 +3,7 @@ package com.aditya.to_do.util
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.aditya.to_do.model.Priority
+import com.aditya.to_do.data.Priority
 
 object Utils {
 

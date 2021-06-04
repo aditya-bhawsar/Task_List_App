@@ -6,7 +6,7 @@
     <data>
         <variable
             name="Task"
-            type="com.aditya.to_do.model.TaskModel" />
+            type="com.aditya.to_do.data.TaskModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,6 +34,7 @@
                 android:id="@+id/priority_card"
                 android:src="@drawable/item_background"
                 android:scaleType="fitXY"
+                android:contentDescription="@string/priority_indicator"
                 app:layout_constraintTop_toTopOf="parent"
                 android:parsePriorityColor="@{Task.priority}"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -45,7 +46,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:maxLength="20"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:text="@{Task.title}"
                 android:textColor="@color/titleText"
                 android:textSize="20sp"
@@ -61,10 +63,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:maxLength="300"
                 android:text="@{Task.description}"
                 android:layout_marginEnd="16dp"
-                android:maxLines="10"
+                android:maxLines="6"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/title_txt"

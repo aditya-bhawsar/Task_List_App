@@ -13,8 +13,8 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.aditya.to_do.R
-import com.aditya.to_do.model.Priority
-import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.data.Priority
+import com.aditya.to_do.data.TaskModel
 import com.aditya.to_do.ui.fragments.ListingFragmentDirections
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
@@ -31,7 +31,7 @@ class BindingAdapters {
             val options: Array<String> =
                 autoCompleteTextView.context.resources.getStringArray(R.array.priorities)
             val adapter: ArrayAdapter<String> =
-                ArrayAdapter(autoCompleteTextView.context, R.layout.dropdown_item, options)
+                ArrayAdapter(autoCompleteTextView.context, R.layout.item_dropdown, options)
             autoCompleteTextView.setAdapter(adapter)
 
             autoCompleteTextView.setOnFocusChangeListener { v, hasFocus ->
@@ -82,13 +82,13 @@ class BindingAdapters {
         fun parsePriorityToText(view: AutoCompleteTextView, priority: Priority) {
             when (priority) {
                 Priority.HIGH -> {
-                    view.setText("High Priority")
+                    view.setText(view.context.getString(R.string.high_priority))
                 }
                 Priority.MEDIUM -> {
-                    view.setText("Medium Priority")
+                    view.setText(view.context.getString(R.string.medium_priority))
                 }
                 Priority.LOW -> {
-                    view.setText("Low Priority")
+                    view.setText(view.context.getString(R.string.low_priority))
                 }
             }
         }

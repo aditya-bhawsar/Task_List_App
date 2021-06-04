@@ -2,7 +2,7 @@ package com.aditya.to_do.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aditya.to_do.model.TaskModel
+import com.aditya.to_do.data.TaskModel
 import com.aditya.to_do.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aditya.to_do">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aditya.task_list">
 
     <application
         android:allowBackup="true"
@@ -8,9 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
-        android:name=".App"
-        android:theme="@style/Splash">
-        <activity android:name=".ui.activity.AppActivity"
+        android:name="com.aditya.task_list.App"
+        android:theme="@style/Splash"
+        tools:ignore="AllowBackup">
+        <activity android:name="com.aditya.task_list.ui.activity.AppActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

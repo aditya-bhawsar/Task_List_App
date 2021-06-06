@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Data Binding Layout-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Data Objects-->
     <data>
         <variable
             name="Task"
-            type="com.aditya.to_do.data.TaskModel" />
+            type="com.aditya.task_list.data.TaskModel" />
     </data>
 
+    <!--Container View Screen-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:sendDataToUpdateFragment="@{Task}"
         android:layout_margin="4dp">
 
+        <!--Container View With Background-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/row_background"
             android:layout_width="match_parent"
@@ -26,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!--Priority ImageView-->
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
@@ -39,7 +44,8 @@
                 android:parsePriorityColor="@{Task.priority}"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <TextView
+            <!--Title TextView-->
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title_txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -57,7 +63,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="My Title" />
 
-            <TextView
+            <!--Description TextView-->
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/desc_txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

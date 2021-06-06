@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
     app:startDestination="@id/listingFragment">
 
+    <!--Destination ListingFragment-->
     <fragment
         android:id="@+id/listingFragment"
-        android:name="com.aditya.to_do.ui.fragments.ListingFragment"
+        android:name="com.aditya.task_list.ui.fragments.ListingFragment"
         android:label="  Task List" >
+        <!--Navigate Action To New Fragment-->
         <action
             android:id="@+id/action_listingFragment_to_newFragment"
             app:destination="@id/newFragment"
@@ -14,6 +16,7 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+        <!--Navigate Action To Edit Fragment-->
         <action
             android:id="@+id/action_listingFragment_to_editFragment"
             app:destination="@id/editFragment"
@@ -22,10 +25,13 @@
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
     </fragment>
+
+    <!--Destination NewFragment-->
     <fragment
         android:id="@+id/newFragment"
-        android:name="com.aditya.to_do.ui.fragments.NewFragment"
+        android:name="com.aditya.task_list.ui.fragments.NewFragment"
         android:label="New Task" >
+        <!--Navigate Action To Listing Fragment-->
         <action
             android:id="@+id/action_newFragment_to_listingFragment"
             app:destination="@id/listingFragment"
@@ -35,10 +41,13 @@
             app:popUpTo="@id/listingFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
+    <!--Destination EditFragment-->
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.aditya.to_do.ui.fragments.EditFragment"
+        android:name="com.aditya.task_list.ui.fragments.EditFragment"
         android:label="Edit Task" >
+        <!--Navigate Action To Listing Fragment-->
         <action
             android:id="@+id/action_editFragment_to_listingFragment"
             app:destination="@id/listingFragment"
@@ -46,8 +55,9 @@
             app:exitAnim="@anim/to_left"
             app:popUpTo="@id/listingFragment"
             app:popUpToInclusive="true" />
+        <!--Argument (Task to display)-->
         <argument
             android:name="Task"
-            app:argType="com.aditya.to_do.data.TaskModel" />
+            app:argType="com.aditya.task_list.data.TaskModel" />
     </fragment>
 </navigation>

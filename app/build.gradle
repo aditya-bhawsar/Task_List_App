@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.aditya.to_do"
+        applicationId "com.aditya.task_list"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

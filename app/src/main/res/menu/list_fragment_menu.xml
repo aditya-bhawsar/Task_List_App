@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--Search Option in Listing Screen-->
     <item android:id="@+id/menu_search"
         android:title="@string/search"
         android:icon="@drawable/ic_search"
         android:iconTint="@color/white"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"
-        />
+        tools:targetApi="o" />
 
     <group android:checkableBehavior="single">
+        <!--Sorting Option in Listing Screen-->
         <item
             android:id="@+id/menu_sort"
             android:title="@string/sort_by">
             <menu>
+                <!--High Priority Selection Option-->
                 <item android:title="@string/priority_high"
                     android:id="@+id/menu_priority_high"/>
-
+                <!--Low Priority Selection Option-->
                 <item android:title="@string/priority_low"
                     android:id="@+id/menu_priority_low"/>
             </menu>
         </item>
     </group>
 
+    <!--Delete All Option in Listing Screen-->
     <item android:id="@+id/menu_delete_all"
         app:showAsAction="never"
         android:title="@string/delete_all"/>

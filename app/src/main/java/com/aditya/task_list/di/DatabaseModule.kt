@@ -17,8 +17,8 @@ import javax.inject.Singleton
 object DatabaseModule {
 
     //Provides Room Database Instance to another provides method
-    @Provides
     @Singleton
+    @Provides
     fun provideDatabase(@ApplicationContext ctx: Context) = Room.databaseBuilder(
         ctx,
         AppDatabase::class.java,

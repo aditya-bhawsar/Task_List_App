@@ -62,6 +62,7 @@ class ListingFragment : Fragment(R.layout.fragment_listing) {
 
         //Allow Options And Icon in the Action Bar
         setHasOptionsMenu(true)
+
         (requireActivity() as AppActivity).supportActionBar!!.setDisplayShowHomeEnabled(true)
         (requireActivity() as AppActivity).supportActionBar!!.setIcon(R.drawable.ic_to_do)
     }
